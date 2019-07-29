@@ -8,17 +8,17 @@ const PostForm = (props) => {
         date: ''
     });
     const changeHandler = event => {
-        setPost({ ...post, [event.target.name]: event.target.value });
+        setPost({ ...post, [event.target.title]: event.target.value });
     }
     const submitHandler = event => {
         event.preventDefault();
         submitPost(post);
         setPost(post);
-        setPost({ name: '', date: '' });
-        history.push('/');
+        setPost({ title: '', date: '' });
+        // history.push('/');
     };
     return (
-        <div className='postForm'>
+        <div className='PostForm'>
             <form onSubmit={submitHandler}>
                 <fieldset>
                     <legend>Create New Post</legend>
@@ -28,7 +28,7 @@ const PostForm = (props) => {
                             <input
                                 name='title'
                                 type='text'
-                                placeholder='Post here'
+                                placeholder='Write post here'
                                 value={post.title}
                                 onChange={changeHandler}
                             />
