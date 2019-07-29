@@ -4,7 +4,9 @@ const PostForm = (props) => {
     console.log(props);
     const { submitPost, initialPost, buttonText, history } = props;
     const [post, setPost] = useState(initialPost || {
-        name: '',
+        userId: '',
+        id: '',
+        title: '',
         date: ''
     });
     const changeHandler = event => {
@@ -14,7 +16,7 @@ const PostForm = (props) => {
         event.preventDefault();
         submitPost(post);
         setPost(post);
-        setPost({ title: '', date: '' });
+        setPost({ userId: '', id: '', title: '', date: '' });
         // history.push('/');
     };
     return (
@@ -22,6 +24,30 @@ const PostForm = (props) => {
             <form onSubmit={submitHandler}>
                 <fieldset>
                     <legend>Create New Post</legend>
+                    <div className='userIdField'>
+                        <label>
+                            User Id
+                            <input
+                                name='userId'
+                                type='text'
+                                placeholder='user Id'
+                                value={post.userId}
+                                onChange={changeHandler}
+                            />
+                        </label>
+                    </div>
+                    <div className='idField'>
+                        <label>
+                            Id
+                            <input
+                                name='id'
+                                type='text'
+                                placeholder='id'
+                                value={post.id}
+                                onChange={changeHandler}
+                            />
+                        </label>
+                    </div>
                     <div className='titleField'>
                         <label>
                             Title
@@ -51,7 +77,6 @@ const PostForm = (props) => {
             </form>
         </div>
     );
-
 }
 
 export default PostForm;

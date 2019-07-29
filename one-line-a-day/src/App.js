@@ -7,8 +7,8 @@ import './App.scss';
 
 function App() {
   const [allPosts, setAllPosts] = useState([
-    { id: 0, title: 'Day One', date: 'July 29, 2019' },
-    { id: 1, title: 'Day Two', date: 'July 30, 2019' },
+    { userId: 1234, id: 0, title: 'Day One', date: 'July 29, 2019' },
+    { userId: 1234, id: 1, title: 'Day Two', date: 'July 30, 2019' },
   ]);
 
   return (

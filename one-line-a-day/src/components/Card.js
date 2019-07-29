@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 const Card = (props) => {
     const { post } = props;
-
     return (
         <div className='card'>
             <div>{post.title}</div>

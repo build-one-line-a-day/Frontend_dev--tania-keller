@@ -3,18 +3,34 @@ import axios from 'axios';
 import PostForm from './PostForm';
 
 export default function CreatePost() {
-    // TODO: Add useState to track data from useEffect
-    // const [post, setPost] = useState([]);
+    const [post, setPost] = useState([]);
     const [error, setError] = useState('');
     useEffect(() => {
-        axios.fetch('https://jsonplaceholder.typicode.com/todos/1')
-            .then(res => (res.json())
-                .then(json => console.log(json))
-                .catch(err => {
-                    console.log('error occurred', error);
-                })
-            )
-
-        return
-    })
+        axios.get('https://jsonplaceholder.typicode.com/posts')
+            .then(res => {
+                console.log(res);
+            })
+            .catch(error => {
+                console.log('error occurred', error);
+            })
+    }, [error])
+    return (
+        <div>
+            <h1>My Posts:</h1>
+        </div>
+    )
 }
+
+// return <section className='character-list grid-view'>
+//     <h1>List of Characters:</h1>
+//     <h2>
+//         {character.map(results => (
+//             <CharacterCard name={results.name}
+//                 id={results.id}
+//                 status={results.status}
+//                 species={results.species} />
+//         ))}
+//     </h2>
+// </section>
+
+// }
