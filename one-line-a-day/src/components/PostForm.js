@@ -7,7 +7,8 @@ const PostForm = (props) => {
         userId: '',
         id: '',
         title: '',
-        date: ''
+        date: '',
+        entry: ''
     });
     const changeHandler = event => {
         setPost({ ...post, [event.target.title]: event.target.value });
@@ -16,7 +17,7 @@ const PostForm = (props) => {
         event.preventDefault();
         submitPost(post);
         setPost(post);
-        setPost({ userId: '', id: '', title: '', date: '' });
+        setPost({ userId: '', id: '', title: '', date: '', entry: '' });
         // history.push('/');
     };
     return (
@@ -24,9 +25,9 @@ const PostForm = (props) => {
             <form onSubmit={submitHandler}>
                 <fieldset>
                     <legend>Create New Post</legend>
-                    <div className='userIdField'>
+                    {/* <div className='userIdField'>
                         <label>
-                            User Id
+                            User Id:
                             <input
                                 name='userId'
                                 type='text'
@@ -38,7 +39,7 @@ const PostForm = (props) => {
                     </div>
                     <div className='idField'>
                         <label>
-                            Id
+                            Id:
                             <input
                                 name='id'
                                 type='text'
@@ -47,14 +48,14 @@ const PostForm = (props) => {
                                 onChange={changeHandler}
                             />
                         </label>
-                    </div>
+                    </div> */}
                     <div className='titleField'>
                         <label>
-                            Title
+                            Title:
                             <input
                                 name='title'
                                 type='text'
-                                placeholder='Write post here'
+                                placeholder='Enter Title'
                                 value={post.title}
                                 onChange={changeHandler}
                             />
@@ -62,12 +63,24 @@ const PostForm = (props) => {
                     </div>
                     <div className='dateField'>
                         <label>
-                            Date
+                            Date:
                             <input
                                 name='date'
                                 type='text'
                                 placeholder='Enter Date'
                                 value={post.date}
+                                onChange={changeHandler}
+                            />
+                        </label>
+                    </div>
+                    <div className='entryField'>
+                        <label>
+                            Entry:
+                            <input
+                                name='entry'
+                                type='text'
+                                placeholder='Write Entry Here'
+                                value={post.entry}
                                 onChange={changeHandler}
                             />
                         </label>

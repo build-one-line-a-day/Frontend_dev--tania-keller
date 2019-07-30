@@ -10,12 +10,30 @@ function App() {
     { userId: 1234, id: 0, title: 'Day One', date: 'July 29, 2019' },
     { userId: 1234, id: 1, title: 'Day Two', date: 'July 30, 2019' },
   ]);
+  //addPost fxn
+  const addPost = post => {
+    setAllPosts([...allPosts, { ...post, id: Date.now() }]);
+  };
+  //editPost fxn
+  const editPost = editedPost => {
+    //want to make changes on our copy of `allPost` array called `allPostCopy`.
+    const allPostsCopy = [...allPosts];
+    //searching for speciic post in our array that needs to be edited.
+    const oldPost = allPostsCopy.find(post => post.id === editedPost.id);
+    // console.log(editedPost, oldPost);
+    //oldPost.title = editedPost.title;
+    //oldPost.date = editedPost.date;
+    //does the same thing as the two preceding `oldPost` lines
+    Object.assign(oldPost, editedPost);
+    setAllPosts(allPostsCopy);
+  };
 
   return (
     <div className="App">
-      return (
+      <div className='formField'>
         <PostForm setAllPosts={setAllPosts} />
-      {allPosts.map(post => <Card post={post} />)}
+        {allPosts.map(post => <Card post={post} />)}
+      </div>
     </div>
   );
 }
@@ -23,23 +41,7 @@ function App() {
 export default App;
 
 
-//   //added addPost fxn
-//   const addPost = post => {
-//     setAllPosts([...allPosts, { ...post, id: Date.now() }]);
-//   };
-//   //added editPost fxn
-//   const editPost = editedPost => {
-//     //want to make changes on our copy of `allPost` array called `allPostCopy`.
-//     const allPostsCopy = [...allPosts];
-//     //searching for post in our array that needs to be edited.
-//     const oldPost = allPostsCopy.find(post => post.id === editedPost.id);
-//     // console.log(editedPost, oldPost);
-//     //oldPost.title = editedPost.title;
-//     //oldPost.date = editedPost.date;
-//     //does the same thing as the two preceding `oldPost` lines
-//     Object.assign(oldPost, editedPost);
-//     setAllPosts(allPostsCopy);
-//   };
+//  
 // }
 
 // return (
@@ -47,7 +49,7 @@ export default App;
 {/* //   <Link to='/'>Home</Link>
     //   <Link to='/add'>Add Person</Link>
     //   <Route path='/add'  */}
-{/* //     render={props => <Form {...props}  */ }
+{/* //     render={props => <PostForm {...props}  */ }
 {/* //       submitPost={addPost} 
     //       buttonText='Add Post'
     //       />} />
