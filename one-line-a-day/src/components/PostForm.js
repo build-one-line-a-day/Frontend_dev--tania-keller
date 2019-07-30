@@ -4,40 +4,29 @@ const PostForm = (props) => {
     console.log(props);
     const { submitPost, initialPost, buttonText, history } = props;
     const [post, setPost] = useState(initialPost || {
-        userId: '',
         id: '',
         title: '',
         date: '',
         entry: ''
     });
     const changeHandler = event => {
-        setPost({ ...post, [event.target.title]: event.target.value });
+        setPost({ ...post, [event.target.name]: event.target.value });
     }
     const submitHandler = event => {
         event.preventDefault();
         submitPost(post);
         setPost(post);
+        //'setPost' clears form by resetting all associated values when submit is pressed
         setPost({ userId: '', id: '', title: '', date: '', entry: '' });
-        // history.push('/');
+        //navigate back to home
+        history.push('/');
     };
     return (
         <div className='PostForm'>
             <form onSubmit={submitHandler}>
                 <fieldset>
                     <legend>Create New Post</legend>
-                    {/* <div className='userIdField'>
-                        <label>
-                            User Id:
-                            <input
-                                name='userId'
-                                type='text'
-                                placeholder='user Id'
-                                value={post.userId}
-                                onChange={changeHandler}
-                            />
-                        </label>
-                    </div>
-                    <div className='idField'>
+                    {/* <div className='idField'>
                         <label>
                             Id:
                             <input
