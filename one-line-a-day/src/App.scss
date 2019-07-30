@@ -1,6 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 
+@media (max-width: 500px) {
+  .App {
+    width: 90%;
+  }
+}
 .App {
   text-align: center;
   width: 85vw;
