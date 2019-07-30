@@ -21,19 +21,40 @@ function App() {
     //searching for speciic post in our array that needs to be edited.
     const oldPost = allPostsCopy.find(post => post.id === editedPost.id);
     // console.log(editedPost, oldPost);
-    //oldPost.title = editedPost.title;
-    //oldPost.date = editedPost.date;
-    //does the same thing as the two preceding `oldPost` lines
     Object.assign(oldPost, editedPost);
     setAllPosts(allPostsCopy);
   };
 
   return (
     <div className="App">
+      <div className="Header">
+        <h1>One Line a Day</h1>
+      </div>
       <div className='formField'>
         <PostForm setAllPosts={setAllPosts} />
         {allPosts.map(post => <Card post={post} />)}
       </div>
+      <div className="Post">
+        <Link to='/'>Home</Link>
+        <Link to='/add'>Add Post</Link>
+        {/* add post route */}
+        <Route path='/add'
+          render={props => <PostForm {...props}
+            submitPost={addPost}
+            buttonText='Add Post'
+          />} />
+        <Route exact path='/' render={props => allPosts.map(post => <Card post={post} />)} />
+        {/* edit post route */}
+        <Route path='/edit/:id'
+          render={props => {
+            // console.log(props);
+            const post = allPosts.find(post => post.id.toString() === props.match.params.id);
+            return <PostForm {...props}
+              initialPost={post}
+              submitPost={editPost}
+              buttonText='Edit Post' />;
+          }} />
+      </div >
     </div>
   );
 }
@@ -41,28 +62,7 @@ function App() {
 export default App;
 
 
-//  
-// }
 
-// return (
-//   <div className="Post">
-{/* //   <Link to='/'>Home</Link>
-    //   <Link to='/add'>Add Person</Link>
-    //   <Route path='/add'  */}
-{/* //     render={props => <PostForm {...props}  */ }
-{/* //       submitPost={addPost} 
-    //       buttonText='Add Post'
-    //       />} />
-    //   <Route exact path='/' render={props => allPosts.map(post => <PostCard post={post} />)} />
-    //   <Route path='/edit/:id'  */}
-{/* //     render={props => { */ }
-{/* //       console.log(props);
-    //       const post = allPosts.find(post => post.id.toString() === props.match.params.id);
-    //       return <Form {...props}  */}
-{/* //         initialPost={post}
-    //         submitPost={editPost}
-    //         buttonText='Edit Post'/>;
-    //     }}/> */}
-//     </div >
-//   );
+
+
 
