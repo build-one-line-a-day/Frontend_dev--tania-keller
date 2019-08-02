@@ -1,33 +1,34 @@
 import axios from 'axios';
 
+//general URL. We add multiple endpoints as diff fxns below
 const apiURL = `https://jsonplaceholder.typicode.com`;
 
-//access a specific post
-export function getPost(id) {
-    return axios.get(`${apiURL}/post/${id}`);
+//access a specific entry
+export function getEntry(id) {
+    return axios.get(`${apiURL}/entry/${id}`);
 }
 
-//return all posts
-export function getAllPosts() {
-    return axios.get(`${apiURL}/post`);
+//return all entries
+export function getEntries() {
+    return axios.get(`${apiURL}/entry`);
 }
 
-export function addPost(post) {
-    return axios.post(`${apiURL}/post`, post);
+export function addEntry(entry) {
+    return axios.post(`${apiURL}/entry`, entry);
 }
-export function editPost(id, post) {
-    return axios.put(`${apiURL}/post/${id}`, post);
+export function editEntry(id, entry) {
+    return axios.put(`${apiURL}/entry/${id}`, entry);
 }
 
 const api = {
-    // getAllPosts: getAllPosts
-    // addPost: addPost
+    // getEntries: getEntries
+    // addEntry: addEntry
     //don't need to add keys as in the previous two lines b/c when you give a var directly to a new object, 
     //it will automatically make a new key using what you provide and will set its value to the same thing you've provided
-    getPost,
-    getAllPosts,
-    addPost,
-    editPost
+    getEntry,
+    getEntries,
+    addEntry,
+    editEntry
 };
 
 export default api;

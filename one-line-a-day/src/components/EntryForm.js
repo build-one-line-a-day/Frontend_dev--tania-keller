@@ -1,31 +1,31 @@
 import React, { useState } from 'react';
 
-const PostForm = (props) => {
+const EntryForm = (props) => {
     console.log(props);
-    const { submitPost, initialPost, buttonText, history } = props;
-    const [post, setPost] = useState(initialPost || {
+    const { submitEntry, initialEntry, buttonText, history } = props;
+    const [entry, setEntry] = useState(initialEntry || {
         id: '',
         title: '',
         date: '',
         entry: ''
     });
     const changeHandler = event => {
-        setPost({ ...post, [event.target.name]: event.target.value });
+        setEntry({ ...entry, [event.target.name]: event.target.value });
     }
     const submitHandler = event => {
         event.preventDefault();
-        submitPost(post);
-        setPost(post);
+        submitEntry(entry);
+        setEntry(entry);
         //'setPost' clears form by resetting all associated values when submit is pressed
-        setPost({ userId: '', id: '', title: '', date: '', entry: '' });
+        setEntry({ userId: '', id: '', title: '', date: '', entry: '' });
         //navigate back to home
         history.push('/');
     };
     return (
-        <div className='PostForm'>
+        <div className='EntryForm'>
             <form onSubmit={submitHandler}>
                 <fieldset>
-                    <legend>Create New Post</legend>
+                    <legend>Create New Entry</legend>
                     {/* <div className='idField'>
                         <label>
                             Id:
@@ -45,7 +45,7 @@ const PostForm = (props) => {
                                 name='title'
                                 type='text'
                                 placeholder='Enter Title'
-                                value={post.title}
+                                value={entry.title}
                                 onChange={changeHandler}
                             />
                         </label>
@@ -57,7 +57,7 @@ const PostForm = (props) => {
                                 name='date'
                                 type='text'
                                 placeholder='Enter Date'
-                                value={post.date}
+                                value={entry.date}
                                 onChange={changeHandler}
                             />
                         </label>
@@ -69,16 +69,16 @@ const PostForm = (props) => {
                                 name='entry'
                                 type='text'
                                 placeholder='Write Entry Here'
-                                value={post.entry}
+                                value={entry.entry}
                                 onChange={changeHandler}
                             />
                         </label>
                     </div>
-                    <button type='submit'>{buttonText}</button>
+                    <button>{buttonText}</button>
                 </fieldset>
             </form>
         </div>
     );
 }
 
-export default PostForm;
+export default EntryForm;

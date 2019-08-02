@@ -20,7 +20,7 @@
 
 
 .App .Header {
-  background: rgb(61, 59, 59);
+  background: #404040;
   padding: 0.6rem;
   font-family: 'Open Sans';
 }
@@ -38,7 +38,7 @@
   background: white;
 }
 
-.PostForm {
+.EntryForm {
   background: rgb(199, 199, 199);
   font-family: 'Montserrat';
   padding: 2rem;
@@ -47,11 +47,11 @@
   margin-bottom: 2rem;
 }
 
-.PostForm legend {
+.EntryForm legend {
   color: black;
 }
 
-.PostForm input {
+.EntryForm input {
   padding: 2rem;
   margin: 1rem;
   width: 70%;
@@ -69,4 +69,27 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.Link-text {
+  border: 1px solid black;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  text-align: center;
+  width: 20%;
+  background: white;
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.Route-text {
+  border: 1px solid black;
+  padding-left: 9rem;
+  background: white;
+  color: black;
 }
